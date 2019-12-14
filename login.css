@@ -23,7 +23,7 @@ input[type=text], input[type=password] {
 }
 /* Set a style for all buttons */
 button {
-  background-color: #f05855;
+  background-color: rgba(0,0,0,0.2);
   color: white;
   padding: 14px 20px;
   /* margin: 8px 0;*/
@@ -39,19 +39,15 @@ button:hover {
 
 /* Extra style for the cancel button (red) */
 .cancelbtn {
-  width: auto;
+  width: 100%;
+  text-align: center;
   padding: 10px 18px;
-  background-color: #f05855;
+  background-color: rgb(125, 186, 185);
 }
 /* Avatar image */
 img.avatar {
   width: 40%;
   border-radius: 50%;
-}
-
-/* Add padding to containers */
-.container {
-  padding: 16px;
 }
 
 /* The "Forgot password" text */

@@ -36,7 +36,7 @@ function getNextMonth() {
 	monthDirection++;
 	var current;
 	var now = new Date();
-	if (now.getMonth() == 11) {
+	if (current == 11) {
 		current = new Date(now.getFullYear() + monthDirection, 0, 1);
 	} else {
 		current = new Date(now.getFullYear(), now.getMonth() + monthDirection, 1);
@@ -48,8 +48,8 @@ function getPrevMonth() {
 	monthDirection--;
 	var current;
 	var now = new Date();
-	if (now.getMonth() == 11) {
-		current = new Date(now.getFullYear() + monthDirection, 0, 1);
+	if (current == 11) {
+		current = new Date(current + monthDirection, 0, 1);
 	} else {
 		current = new Date(now.getFullYear(), now.getMonth() + monthDirection, 1);
 	}
@@ -149,8 +149,9 @@ function initCalender(monthData) {
 initCalender(getMonth(new Date()));
 
 var clickCounter = 0;
-$(".fa-angle-double-right").click(function () {
+$(".showDate").click(function () {
 	$(".right-wrapper").toggleClass("is-active");
+	$(".sideb").toggleClass("is-active");
 	$(this).toggleClass("is-active");
 });
 

@@ -1,9 +1,17 @@
 @import url("https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap");
 #ereig{
 	width: 185px;
+	border:none;
+	margin-top: 10px;
 }
 .login{
 
+}
+body{
+	background-color: #ebedfa;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 1200 800'%3E%3Cdefs%3E%3CradialGradient id='a' cx='0' cy='800' r='800' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0' stop-color='%23afd9ff'/%3E%3Cstop offset='1' stop-color='%23afd9ff' stop-opacity='0'/%3E%3C/radialGradient%3E%3CradialGradient id='b' cx='1200' cy='800' r='800' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0' stop-color='%23ffecef'/%3E%3Cstop offset='1' stop-color='%23ffecef' stop-opacity='0'/%3E%3C/radialGradient%3E%3CradialGradient id='c' cx='600' cy='0' r='600' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0' stop-color='%23a3e7ca'/%3E%3Cstop offset='1' stop-color='%23a3e7ca' stop-opacity='0'/%3E%3C/radialGradient%3E%3CradialGradient id='d' cx='600' cy='800' r='600' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0' stop-color='%23ebedfa'/%3E%3Cstop offset='1' stop-color='%23ebedfa' stop-opacity='0'/%3E%3C/radialGradient%3E%3CradialGradient id='e' cx='0' cy='0' r='800' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0' stop-color='%2300ccff'/%3E%3Cstop offset='1' stop-color='%2300ccff' stop-opacity='0'/%3E%3C/radialGradient%3E%3CradialGradient id='f' cx='1200' cy='0' r='800' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0' stop-color='%23fff6de'/%3E%3Cstop offset='1' stop-color='%23fff6de' stop-opacity='0'/%3E%3C/radialGradient%3E%3C/defs%3E%3Crect fill='url(%23a)' width='1200' height='800'/%3E%3Crect fill='url(%23b)' width='1200' height='800'/%3E%3Crect fill='url(%23c)' width='1200' height='800'/%3E%3Crect fill='url(%23d)' width='1200' height='800'/%3E%3Crect fill='url(%23e)' width='1200' height='800'/%3E%3Crect fill='url(%23f)' width='1200' height='800'/%3E%3C/svg%3E");
+	background-attachment: fixed;
+	background-size: cover;
 }
 body, html {
 	margin: 0;
@@ -16,11 +24,29 @@ body, html {
   outline: none;
   perspective: 1000px;
 }
+.titel-box{
+	position: absolute;
+	    top: 102%;
+	    width: 100%;
+	    height: 40px;
+	    background-color: rgba(0,0,0,0.2);
+			text-align: center;
+}
+.titel-box p{
+	color: white;
+}
+.ereignis-box{
+	position: absolute;
+	    top: 111.5%;
+	    width: 100%;
+	    height: 100px;
+	    background-color: white;
+}
 .main {
   position: absolute;
   width: 730px;
   height: 420px;
-  top: 50%;
+  top: 40%;
   left: 50%;
 	z-index: -1;
   box-sizing: border-box;
@@ -29,12 +55,31 @@ body, html {
   transform-style: preserve-3d;
 }
 .main.is-rotated-left {
-  transform: translate(-50%, -50%) rotateY(-4deg);
+	transform: translate(-50%, -50%) rotateY(-4deg);
 }
 .main.is-rotated-right {
-  transform: translate(-50%, -50%) rotateY(4deg);
+	transform: translate(-50%, -50%) rotateY(4deg);
 }
-.main .sideb,
+.sideb{
+	z-index: 9;
+}
+.sideb.is-active{
+	width: 97% !important;
+	transition: ease-in-out 1s;
+}
+.main .sideb{
+	background-color: white;
+  width: 47%;
+  float: left;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+	transition: ease-in-out 1s;
+}
 .main .right-wrapper {
   background-color: white;
   width: 50%;
@@ -46,6 +91,7 @@ body, html {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+	transition: ease-in-out 1s;
 }
 .main .header {
   padding: 15px 0 20px;
@@ -63,35 +109,57 @@ body, html {
   font-weight: 700;
 }
 .main .right-wrapper {
-  background-color: #f05855;
+	float: none;
+	position: absolute;
+  background-color: rgba(0,204,255,0.2);
   color: white;
-  transform-origin: left center;
-  transform: rotateY(110deg);
-  transition: all 0.5s;
+	margin-left: 130%;
+	opacity: 0;
+	z-index: 2;
+	transition: ease-in-out 1s;
+}
+.main .right-wrapper label {
+	margin-top: 40px;
 }
 .main .right-wrapper.is-active {
-  transform: rotateY(0deg);
+	opacity: 1;
+	margin-left: 50%;
+	transition: ease-in-out 1s;
+
 }
 .main .right-wrapper .header {
   text-align: left;
   justify-content: center;
 }
 .main .right-wrapper .day {
-  font-size: 12em;
+  font-size: 3em;
   text-indent: -12px;
   display: block;
 }
 .main .right-wrapper .month {
   font-size: 2.5em;
 }
-.main .sideb .showDate {
-  color: white;
-  text-align: right;
-  width: 100%;
+.main .showDate {
+	width: 3%;
+    float: left;
+    height: 100%;
+    background-color: rgba(56,86,117,0.6);
+}
+.main .showDate:hover {
+	cursor: pointer;
+}
+.main .showDate.is-active .fa-angle-double-right:before {
+	content: "\f100";
+}
+.main .showDate .fa{
+	top: 50%;
+    position: absolute;
+    padding-left: 4px;
+    color: white;
 }
 .main .sideb .showDate i {
   cursor: pointer;
-  background: #f05855;
+	background: rgba(56,86,117,0.6);
   border-radius: 4px;
   padding: 8px 12px;
   transform: scale(1);
@@ -115,17 +183,26 @@ body, html {
   color: transparent;
 }
 .main .sideb table th {
-  color: #f05855;
+  color: #385675;
   font-size: 0.75em;
   text-transform: uppercase;
   margin-bottom: 10px;
+	transition: all 1s;
+}
+.main .sideb.is-active table th {
+  font-size: 1.2em;
+  transition: all 1s;
 }
 .main .sideb table td {
   padding: 11px 5px;
   color: #ced0ce;
   font-size: 0.75em;
-  transition: all 0.3s;
+  transition: all 1s;
   position: relative;
+}
+.main .sideb.is-active table td {
+  font-size: 1.2em;
+  transition: all 1s;
 }
 .main .sideb table td::before {
   content: "";
@@ -136,7 +213,7 @@ body, html {
   left: 50%;
   top: 100%;
   transform: translate(-50%, -8px);
-  background-color: #f05855;
+  background-color: #385675;
 }
 .main .sideb table td.currentDay::before {
   display: block;
@@ -146,7 +223,7 @@ body, html {
   cursor: pointer;
 }
 .main .sideb table td.selectable:hover {
-  background: #f05855;
+  background: #385675;
   color: white;
 }
 .main .sideb table td.between {
@@ -154,6 +231,6 @@ body, html {
   color: white;
 }
 .main .sideb table td.active, .main .sideb table td.hover {
-  background: #f05855;
+  background: #385675;
   color: white;
 }
