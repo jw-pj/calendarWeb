@@ -147,7 +147,6 @@ body, html {
 }
 .main .showDate:hover {
 	cursor: pointer;
-	background-color: rgba(0,0,0,0.1);
 }
 .main .showDate.is-active .fa-angle-double-right:before {
 	content: "\f100";
