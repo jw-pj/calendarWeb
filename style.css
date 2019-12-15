@@ -4,8 +4,14 @@
 	border:none;
 	margin-top: 10px;
 }
-.login{
-
+#bezei{
+	width: 185px;
+	border:none;
+	margin-top: 10px;
+}
+.name{
+	position: absolute;
+	padding: 5px;
 }
 body{
 	background-color: #ebedfa;

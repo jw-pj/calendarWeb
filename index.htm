@@ -1,3 +1,4 @@
+<?php header('Access-Control-Allow-Origin: *'); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,25 +19,28 @@
   <div id="id01" class="modal">
 
     <!-- Modal Content -->
-    <form class="modal-content animate" action="/action_page.php">
+    <div class="modal-content animate">
 
       <div class="container">
         <label for="uname"><b>Benutzername</b></label>
-        <input type="text" placeholder="Eingabe Benutzername" name="uname" required>
+        <input id="log-email" type="text" placeholder="Eingabe Benutzername" name="email" required>
 
         <label for="psw"><b>Passwort</b></label>
-        <input type="password" placeholder="Eingabe Passwort" name="psw" required>
+        <input id="log-psw" type="password" placeholder="Eingabe Passwort" name="psw" required>
 
-        <button type="submit">Anmelden</button>
+        <button type="submit" onclick="getInputValue();">Anmelden</button>
       </div>
 
       <div class="container" style="background-color:#f1f1f1">
-        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn"><a href="/home/runner/work/calendarWeb/calendarWeb:8080/Moritz">Cancel</a></button>
+        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
       </div>
-    </form>
+      <div>
+      </div>
+    </div>
   </div>
 
   <div class="main">
+    <div class="name"><span>Benutzer: </span><span class="user"></span></div>
   <div class="sideb">
     <div class="header">
       <i class="fa fa-angle-left" aria-hidden="true"></i>
@@ -120,15 +124,18 @@
   <div class="right-wrapper is-active">
     <div class="header"><span></span></div><span class="day"></span><span class="month"></span>
   </br>
-       <label for="ereig">Ereignis :</br>
+  <label for="bezei">Bezeichnung :</br>
+<input id="bezei" name="bezei">
+</label>
+       <label for="ereig">Beschreibung :</br>
     <input id="ereig" name="ereig">
   </label>
-  </br>
-    <button type="submit" value="Submit">Speichern</button>
+</br>
+    <button type="submit" value="Submit" onclick="save()">Speichern</button>
   </div>
   <div class="titel-box"><p>Deine Ereignisse</p></div>
     <div class="ereignis-box">
-      <div class="ereignis-box-text"></div>
+      <div class="ereignis-box-text"><span class="result"></span></div>
     </div>
 </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>

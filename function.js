@@ -142,10 +142,40 @@ function initCalender(monthData) {
 				row++;
 			}
 		});
+
 	$("td.selectable").click(function () {
 		dateClickHandler($(this));
+		var day1 = parseInt($(this).html());
+		var month1 = $("span.month").html();
+		var year1 = $("span.year").html();
+		var datum = day1 + '.' + month1 + '.' + year1;
+		var user = $("span.user").html();
+		$.getJSON('http://192.168.178.24:8080/Ereignislist/?Mail=' + user + '&Datum=' + datum, function(data) {
+			if(data.ereignisse[0].startdatum == datum){
+				$("span.result").html(data.ereignisse[0].name + ':' + '</br>' + data.ereignisse[0].beschreibung);
+			}
+			else{
+				alert("fail");
+			}
+			});
+		});
+		};
+
+function save(){
+	$("td.selectable").click(function () {
+			dateClickHandler($(this));
+			var day1 = parseInt($(this).html());
+			var month1 = $("span.month").html();
+			var year1 = $("span.year").html();
+			var datum = day1 + '.' + month1 + '.' + year1;
+		var user = $("span.user").html();
+		var inputBez = document.getElementById("bezei").value;
+		var inputBes = document.getElementById("ereig").value;
+		$.getJSON('http://192.168.178.24:8080/InsertTermin/?Datum='+ datum +'&Bezeichnung='+ inputBez +'&Beschreibung='+ inputBes +'&User=' + user, function(data) {
+			});
 	});
 }
+
 initCalender(getMonth(new Date()));
 
 var clickCounter = 0;
@@ -207,10 +237,27 @@ $(".fa-angle-left").click(function () {
 	}, 195);
 });
 
-$(".fa-angle-right").click(function () {
+$(".fa-angle-right").click(function (inputVal) {
 	getNextMonth();
 	$(".main").addClass("is-rotated-right");
 	setTimeout(function () {
 		$(".main").removeClass("is-rotated-right");
 	}, 195);
 });
+
+	function getInputValue(){
+						 var inputVal = document.getElementById("log-email").value;
+						 var inputValPsw = document.getElementById("log-psw").value;
+
+$.getJSON('http://192.168.178.24:8080/User/?Mail=' + inputVal, function(data) {
+	if(data.passwort == inputValPsw){
+		document.getElementById("id01").style.display = "none";
+		$("span.user").html(data.email);
+
+	}
+	else{
+		alert("Passwort falsch.");
+	}
+
+	});
+};
