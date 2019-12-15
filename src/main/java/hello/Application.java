@@ -8,7 +8,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class Application {
 
     public static void main(String[] args) {
-       	System.out.println( "Host Name/Adresse: " + InetAddress.getLocalHost() );
+       try {
+			System.out.println( "Host Name/Adresse: " + InetAddress.getLocalHost() );
+		} catch (UnknownHostException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	    SpringApplication.run(Application.class, args);
     }
