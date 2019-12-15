@@ -3,6 +3,8 @@
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -10,12 +12,15 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class Application {
 
     public static void main(String[] args) {
+    	Logger logger = LoggerFactory.getLogger(Application.class);
     	try {
-			System.out.println( "Host Name/Adresse: " + InetAddress.getLocalHost() );
+    	
+			logger.info( "Host Name/Adresse: " + InetAddress.getLocalHost() );
 		} catch (UnknownHostException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+//    	InetAddress.getByName(host)
 
     	SpringApplication.run(Application.class, args);
     }
