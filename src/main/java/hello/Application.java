@@ -1,6 +1,8 @@
 	package hello;
 
 import java.net.InetAddress;
+import java.net.UnknownHostException;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -8,13 +10,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class Application {
 
     public static void main(String[] args) {
-       try {
+    	try {
 			System.out.println( "Host Name/Adresse: " + InetAddress.getLocalHost() );
 		} catch (UnknownHostException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
-	    SpringApplication.run(Application.class, args);
+    	SpringApplication.run(Application.class, args);
     }
 }
