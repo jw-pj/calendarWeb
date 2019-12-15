@@ -1,5 +1,7 @@
 	package hello;
 
+import java.net.Inet4Address;
+import java.net.Inet6Address;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
@@ -16,6 +18,8 @@ public class Application {
     	try {
     	
 			logger.info( "Host Name/Adresse: " + InetAddress.getLocalHost() );
+			logger.info(Inet4Address.getLocalHost().toString());
+			logger.info(Inet6Address.getLocalHost().toString());
 		} catch (UnknownHostException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
