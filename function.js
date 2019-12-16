@@ -150,12 +150,15 @@ function initCalender(monthData) {
 		var year1 = $("span.year").html();
 		var datum = day1 + '.' + month1 + '.' + year1;
 		var user = $("span.user").html();
-		$.getJSON('http://192.168.178.24:8080/Ereignislist/?Mail=' + user + '&Datum=' + datum, function(data) {
-			if(data.ereignisse[0].startdatum == datum){
+		$.getJSON('http://192.168.43.146:8080/Ereignislist/?Mail=' + user + '&Datum=' + datum, function(data) {
+			if(data.ereignisse[0] == null){
+				$("span.result").html('Noch kein Termin');
+			}
+			else if(data.ereignisse[0].startdatum == datum){
 				$("span.result").html(data.ereignisse[0].name + ':' + '</br>' + data.ereignisse[0].beschreibung);
 			}
 			else{
-				alert("fail");
+				alert('fail');
 			}
 			});
 		});
@@ -171,8 +174,11 @@ function save(){
 		var user = $("span.user").html();
 		var inputBez = document.getElementById("bezei").value;
 		var inputBes = document.getElementById("ereig").value;
-		$.getJSON('http://192.168.178.24:8080/InsertTermin/?Datum='+ datum +'&Bezeichnung='+ inputBez +'&Beschreibung='+ inputBes +'&User=' + user, function(data) {
+
+		$.getJSON('http://192.168.43.146:8080/InsertTermin/?Datum='+ datum +'&Bezeichnung='+ inputBez +'&Beschreibung='+ inputBes +'&User=' + user, function(data) {
 			});
+			document.getElementById("ereig").value = "";
+			document.getElementById("bezei").value = "";
 	});
 }
 
@@ -205,7 +211,6 @@ function dateClickHandler(elem) {
 	$("td.selectable").hover(function () {
 
 		var day2 = parseInt($(this).html());
-		$(this).addClass("hover");
 		$("td.selectable").each(function () {
 			$(this).removeClass("between");
 
@@ -214,14 +219,12 @@ function dateClickHandler(elem) {
 			$("td.selectable").each(function () {
 				var dayBetween = parseInt($(this).html());
 				if (dayBetween > day2 && dayBetween < day1) {
-					$(this).addClass("between");
 				}
 			});
 		} else if (day1 < day2 + 1) {
 			$("td.selectable").each(function () {
 				var dayBetween = parseInt($(this).html());
 				if (dayBetween > day1 && dayBetween < day2) {
-					$(this).addClass("between");
 				}
 			});
 		}
@@ -249,7 +252,7 @@ $(".fa-angle-right").click(function (inputVal) {
 						 var inputVal = document.getElementById("log-email").value;
 						 var inputValPsw = document.getElementById("log-psw").value;
 
-$.getJSON('http://192.168.178.24:8080/User/?Mail=' + inputVal, function(data) {
+$.getJSON('http://192.168.43.146:8080/User/?Mail=' + inputVal, function(data) {
 	if(data.passwort == inputValPsw){
 		document.getElementById("id01").style.display = "none";
 		$("span.user").html(data.email);
