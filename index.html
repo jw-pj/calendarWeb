@@ -4,22 +4,22 @@
 <head>
   <meta charset="UTF-8">
 
-  <title>Calender</title>
+  <title>Calendar</title>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
       <link rel="stylesheet" href="style.css">
       <link  rel="stylesheet" href="login.css">
       <link rel="icon"
         type="image/png"
-        href="favicon.ico" />
+        href="favicon.ico?=v2" />
 
 </head>
 
 <body>
   <!-- The Modal -->
   <div id="id01" class="modal">
-
     <!-- Modal Content -->
     <div class="modal-content animate">
+      <div class="logo-login"><h1>SuperCalendar</h1></div>
 
       <div class="container">
         <label for="uname"><b>Benutzername</b></label>
@@ -38,7 +38,7 @@
       </div>
     </div>
   </div>
-
+  <div class="logo"><h1>SuperCalendar</h1></div>
   <div class="main">
     <div class="name"><span>Benutzer: </span><span class="user"></span></div>
   <div class="sideb">
@@ -123,7 +123,6 @@
   <div class="showDate"><i class="fa fa-angle-double-right" aria-hidden="true"></i></div>
   <div class="right-wrapper is-active">
     <div class="header"><span></span></div><span class="day"></span><span class="month"></span>
-  </br>
   <label class="clear" for="bezei">Bezeichnung :</br>
 <input class="clear" id="bezei" name="bezei">
 </label>
@@ -132,6 +131,8 @@
   </label>
 </br>
     <button class="speichern" type="submit" value="Submit" onclick="save();">Speichern</button>
+    <button class="speichern" type="submit" value="Submit" onclick="deleteein();">Löschen</button>
+
   </div>
   <div class="titel-box"><p>Deine Ereignisse</p></div>
     <div class="ereignis-box">

@@ -23,7 +23,8 @@ input[type=text], input[type=password] {
 }
 /* Set a style for all buttons */
 button {
-  background-color: rgba(0,0,0,0.2);
+  font-size: medium;
+  background-color: rgba(177,230,232);
   color: white;
   padding: 14px 20px;
   /* margin: 8px 0;*/
@@ -42,7 +43,7 @@ button:hover {
   width: 100%;
   text-align: center;
   padding: 10px 18px;
-  background-color: rgb(125, 186, 185);
+  background-color: rgb(0,0,0,0.2);
 }
 /* Avatar image */
 img.avatar {

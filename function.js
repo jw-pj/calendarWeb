@@ -175,13 +175,27 @@ function save(){
 		var inputBez = document.getElementById("bezei").value;
 		var inputBes = document.getElementById("ereig").value;
 
+		if( inputBez != "" && inputBes != ""){
 		$.getJSON('http://192.168.43.146:8080/InsertTermin/?Datum='+ datum +'&Bezeichnung='+ inputBez +'&Beschreibung='+ inputBes +'&User=' + user, function(data) {
 			});
 			document.getElementById("ereig").value = "";
 			document.getElementById("bezei").value = "";
+	};
+})
+}
+function deleteein(){
+	$("td.selectable").click(function () {
+			dateClickHandler($(this));
+			var day1 = parseInt($(this).html());
+			var month1 = $("span.month").html();
+			var year1 = $("span.year").html();
+			var datum = day1 + '.' + month1 + '.' + year1;
+
+		$.getJSON('http://192.168.43.146:8080/DeleteTermin/?Datum='+ datum, function(data) {
+			});
+			$("span.result").html('Noch kein Termin');
 	});
 }
-
 initCalender(getMonth(new Date()));
 
 var clickCounter = 0;
